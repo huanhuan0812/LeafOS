@@ -2,3 +2,4 @@
 /test
 build_rust-uefi.sh
 .DS_Store
+/release
