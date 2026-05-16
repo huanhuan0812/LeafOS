@@ -3,3 +3,6 @@
 build_rust-uefi.sh
 .DS_Store
 /release
+tmp.rs
+启动阶段.txt
+run_qemu.sh
