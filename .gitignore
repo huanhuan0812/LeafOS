@@ -6,3 +6,5 @@ build_rust-uefi.sh
 tmp.rs
 启动阶段.txt
 run_qemu.sh
+*.log
+iso/

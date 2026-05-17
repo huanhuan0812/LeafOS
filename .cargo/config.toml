@@ -1,0 +1,7 @@
+[target.aarch64-unknown-uefi]
+linker = "rust-lld"
+rustflags = [
+    "-C", "link-arg=/subsystem:efi_application",
+    "-C", "link-arg=/base:0x40000000",
+    "-C", "link-arg=/stack:0x100000",
+]

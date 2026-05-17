@@ -186,20 +186,20 @@ impl DynamicMemoryList {
     }
 
     // 清理（如果需要提前释放）
-    pub fn free(&mut self) {
-        if !self.entries.is_null() {
-            let total_size = self.capacity * core::mem::size_of::<MemoryRegionEntry>();
-            let pages = (total_size + PAGE_SIZE as usize - 1) / PAGE_SIZE as usize;
-            // Convert entries pointer to NonNull<u8>
-            let addr = unsafe { core::ptr::NonNull::new_unchecked(self.entries as *mut u8) };
-            unsafe {
-                let _ = boot::free_pages(addr, pages);
-            }
-            self.entries = core::ptr::null_mut();
-            self.count = 0;
-            self.capacity = 0;
-        }
-    }
+    // pub fn free(&mut self) {
+    //     if !self.entries.is_null() {
+    //         let total_size = self.capacity * core::mem::size_of::<MemoryRegionEntry>();
+    //         let pages = (total_size + PAGE_SIZE as usize - 1) / PAGE_SIZE as usize;
+    //         // Convert entries pointer to NonNull<u8>
+    //         let addr = unsafe { core::ptr::NonNull::new_unchecked(self.entries as *mut u8) };
+    //         unsafe {
+    //             let _ = boot::free_pages(addr, pages);
+    //         }
+    //         self.entries = core::ptr::null_mut();
+    //         self.count = 0;
+    //         self.capacity = 0;
+    //     }
+    // }
 
     // 合并相邻且类型相同的内存区域
     pub fn merge_adjacent(&mut self) {
